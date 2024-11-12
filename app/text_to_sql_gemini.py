@@ -7,8 +7,7 @@ import google.generativeai as genai
 
 load_dotenv()
 
-def connect_database():
-
+def connect_database(): # Parâmetros de conexão com a base de dados
     user = os.getenv('user')
     password = os.getenv('password')
     host = os.getenv('host')
@@ -21,8 +20,7 @@ def connect_database():
 
     return engine
 
-def get_schemas(engine):
-    
+def get_schemas(engine): # Extração e formatação dos esquemas das tabelas presentes na base    
     base_content_query = '''
     SELECT 
         table_name,
@@ -58,7 +56,7 @@ def get_schemas(engine):
     ddl_text = "\n\n".join(ddl_schemas)
     return ddl_text
 
-def ask_gemini(query):
+def ask_gemini(query): # Prompt para consulta sql a partir de texto em linguagem natural usando API Google Gemini
 
     engine = connect_database()
 

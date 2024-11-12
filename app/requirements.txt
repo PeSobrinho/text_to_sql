@@ -3,4 +3,4 @@ sqlalchemy
 google-generativeai
 pandas
 python-dotenv
-stramlit
+streamlit

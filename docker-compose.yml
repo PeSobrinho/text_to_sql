@@ -1,0 +1,9 @@
+services:
+  streamlit:
+    container_name: "PeSobrinho_text_to_sql"
+    build:
+      dockerfile: ./Dockerfile
+      context: ./
+    image: pesobrinho95/barber_shop_report:latest
+    ports:
+      - "8501:8501"
