@@ -4,6 +4,6 @@ services:
     build:
       dockerfile: ./Dockerfile
       context: ./
-    image: pesobrinho95/barber_shop_report:latest
+    image: pesobrinho95/text_to_sql:1.0
     ports:
       - "8501:8501"
