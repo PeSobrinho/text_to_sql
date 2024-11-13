@@ -56,7 +56,7 @@ def get_schemas(engine): # Extração e formatação dos esquemas das tabelas pr
     ddl_text = "\n\n".join(ddl_schemas)
     return ddl_text
 
-def ask_gemini(query): # Prompt para consulta sql a partir de texto em linguagem natural usando API Google Gemini
+def ask_gemini(query, chat_context): # Prompt para consulta sql a partir de texto em linguagem natural usando API Google Gemini
 
     engine = connect_database()
 
@@ -88,9 +88,14 @@ def ask_gemini(query): # Prompt para consulta sql a partir de texto em linguagem
     A tabela fact_servicos_barbearia contém dados de cada atendimento prestado
     </descricao_tabelas>
 
+    <contexto_chat>
+    {chat_context}
+    </contexto_chat>
+
     <instruções>
     1 - Antes de gerar a query, faça:
         - Consulte <descricao_tabelas></descricao_tabelas> para entender do que se trata cada tabela
+        - ATENÇÃO ao <contexto_chat></contexto_chat>
     2 - Com base unicamente no <esquema></esquema> fornecido, gere uma query sql que responda a pergunta do usuário;
     3 - Otimize a query gerada para a melhor performance;
     4 - Mantenha boas práticas em SQL;
