@@ -33,7 +33,7 @@ if prompt := st.chat_input('Faça uma pergunta sobre os dados da barbearia'):
         response = ""
 
         #### Consulta gerada pelo Gemini
-        sql_result = sqlGen.ask_gemini(prompt) 
+        sql_result = sqlGen.ask_gemini(prompt, st.session_state.messages) 
         response += f'Consulta gerada\n```sql\n{sql_result}\n```\n\n'
 
         message_placeholder.markdown(response)
