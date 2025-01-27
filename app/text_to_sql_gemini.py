@@ -16,7 +16,7 @@ def connect_database(): # Parâmetros de conexão com a base de dados
     ssl_cert= os.getenv('ssl_cert')
 
 
-    engine = create_engine(f'postgresql+psycopg2://{user}:{password}@{host}:{port}/{database}?sslmode=verify-full&sslrootcert={ssl_cert}')
+    engine = create_engine(f'postgresql+psycopg2://{user}:{password}@{host}:{port}/{database}')
 
     return engine
 
