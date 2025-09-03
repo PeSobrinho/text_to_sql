@@ -13,10 +13,10 @@ def connect_database(): # Parâmetros de conexão com a base de dados
     host = os.getenv('host')
     port = os.getenv('port')
     database = os.getenv('database')
-    ssl_cert= os.getenv('ssl_cert')
+    #ssl_cert= os.getenv('ssl_cert')
 
 
-    engine = create_engine(f'postgresql+psycopg2://{user}:{password}@{host}:{port}/{database}?sslmode=verify-full&sslrootcert={ssl_cert}')
+    engine = create_engine(f'postgresql+psycopg2://{user}:{password}@{host}:{port}/{database}?sslmode=require&channel_binding=require')
 
     return engine
 
@@ -107,7 +107,7 @@ def ask_gemini(query, chat_context): # Prompt para consulta sql a partir de text
     genai.configure(api_key = gemini_api)
 
     model = genai.GenerativeModel(
-        model_name= 'gemini-1.5-pro',
+        model_name= os.getenv('gemini_model'),
         generation_config= gen_config,
         system_instruction= prompt)
 
